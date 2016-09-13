@@ -252,7 +252,7 @@
 #define CONFIG_SYS_LONGHELP		/* undef to save memory */
 #define CONFIG_SYS_HUSH_PARSER		/* use "hush" command parser	*/
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
-#define CONFIG_SYS_PROMPT		"TINY4412 # "
+#define CONFIG_SYS_PROMPT		"TINY4412_SLASH # "
 #define CONFIG_SYS_CBSIZE	256	/* Console I/O Buffer Size */
 #define CONFIG_SYS_PBSIZE	384	/* Print Buffer Size */
 #define CONFIG_SYS_MAXARGS	16	/* max number of command args */
@@ -440,5 +440,7 @@
 #define CFG_PHY_KERNEL_BASE	MEMORY_BASE_ADDRESS + 0x8000
 
 #define MEMORY_BASE_ADDRESS	0x40000000
+
+#define CONFIG_HELLOWORLD
 
 #endif	/* __CONFIG_H */
