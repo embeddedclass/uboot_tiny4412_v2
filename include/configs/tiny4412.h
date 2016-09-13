@@ -442,5 +442,6 @@
 #define MEMORY_BASE_ADDRESS	0x40000000
 
 #define CONFIG_HELLOWORLD
+#define CONFIG_LEDCMD
 
 #endif	/* __CONFIG_H */
