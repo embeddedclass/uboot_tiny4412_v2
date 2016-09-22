@@ -42,6 +42,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[0].attribute = 0x0;
 	strcpy(image[0].description, "fwbl1");
 	dbg("fwbl1: %d\n", image[0].start_blk);
+	printf("fwbl1: %d\n", image[0].start_blk);
 
 	/* image 1 should be bl1 */
 	image[1].start_blk = image[0].start_blk + MOVI_FWBL1_BLKCNT;
@@ -50,6 +51,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[1].attribute = 0x1;
 	strcpy(image[1].description, "u-boot parted");
 	dbg("iram block: %d\n", image[1].start_blk);
+	printf("iram block: %d\n", image[1].start_blk);
 
 	/* image 2 should be u-boot */
 	image[2].start_blk = image[1].start_blk + MOVI_BL1_BLKCNT;
@@ -58,6 +60,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[2].attribute = 0x2;
 	strcpy(image[2].description, "u-boot");
 	dbg("u-boot: %d\n", image[2].start_blk);
+	printf("u-boot: %d\n", image[2].start_blk);
 
 	/* image 3 should be TrustZone S/W */
 	image[3].start_blk = image[2].start_blk + MOVI_UBOOT_BLKCNT;
@@ -66,6 +69,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[3].attribute = 0x9;
 	strcpy(image[3].description, "TrustZone S/W");
 	dbg("TrustZone S/W: %d\n", image[3].start_blk);
+	printf("TrustZone S/W: %d\n", image[3].start_blk);
 
 	/* image 4 should be environment */
 	image[4].start_blk = image[3].start_blk + MOVI_TZSW_BLKCNT;
@@ -74,6 +78,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[4].attribute = 0x10;
 	strcpy(image[4].description, "environment");
 	dbg("env: %d\n", image[4].start_blk);
+	printf("env: %d\n", image[4].start_blk);
 
 
 	/* For eMMC partition BLOCK Change*/
@@ -87,6 +92,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[5].attribute = 0x4;
 	strcpy(image[5].description, "kernel");
 	dbg("knl: %d\n", image[5].start_blk);
+	printf("knl: %d\n", image[5].start_blk);
 
 	/* image 6 should be RFS */
 	image[6].start_blk = image[5].start_blk + MOVI_ZIMAGE_BLKCNT;
@@ -95,6 +101,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[6].attribute = 0x8;
 	strcpy(image[6].description, "rfs");
 	dbg("rfs: %d\n", image[6].start_blk);
+	printf("rfs: %d\n", image[6].start_blk);
 
 	/* image 7 should be bl2 */
 	image[7].start_blk = image[0].start_blk + MOVI_FWBL1_BLKCNT;
@@ -103,6 +110,7 @@ int init_raw_area_table(block_dev_desc_t * dev_desc, int location)
 	image[7].attribute = 0x3;
 	strcpy(image[7].description, "bl2");
 	dbg("bl2: %d\n", image[7].start_blk);
+	printf("bl2: %d\n", image[7].start_blk);
 
 	for (i=8; i<15; i++) {
 		raw_area_control.image[i].start_blk = 0;

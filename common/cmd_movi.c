@@ -114,6 +114,11 @@ int do_movi(cmd_tbl_t * cmdtp, int flag, int argc, char *argv[])
 
 	init_raw_area_table(&mmc->block_dev, location);
 
+	/*
+	 * 	initial partition locate
+	 * ./arch/arm/cpu/armv7/exynos/movi_partition.c:22
+	 */
+	 
 	/* firmware BL1 r/w */
 	if (attribute == 0x0) {
 		for (i=0, image = raw_area_control.image; i<15; i++) {
