@@ -71,3 +71,54 @@ ulong get_MPLL_CLK(void)
 	return (get_PLLCLK(MPLL));
 }
 
+ulong get_LEFTBUS_CLK (int clk_type)
+{
+	ulong mux_mpll_user, mux_gdl_sel;
+	ulong clk_gdl, clk_gpl, mpll_clk, apll_clk;
+	unsigned int *clk_left_bus_div;
+	unsigned int gpl_div, gdl_div, read_left_bus_div;
+
+	clk_left_bus_div = (unsigned int *)(ELFIN_CLOCK_BASE + CLK_DIV_LEFTBUS_OFFSET);
+
+	mux_mpll_user = (LEFTBUS_CON0_REG & (0x01 << 4)) >> 4;
+	if (!mux_mpll_user) {
+		printf ("FIN_PLL : %lu\n", CONFIG_SYS_CLK_FREQ);
+		return;
+	} else {
+		printf ("FOUT_MPLL : %lu\n", get_APLL_CLK());
+	}
+
+	mux_gdl_sel = LEFTBUS_CON0_REG & 0x01;
+	if (!mux_gdl_sel) {
+		printf ("SCLK_MPLL\n");
+	} else {
+		printf ("SCLK_APLL\n");
+	}
+
+	read_left_bus_div = *clk_left_bus_div;
+	gpl_div = (read_left_bus_div & (0x07 << 4)) >> 4;
+	gdl_div = read_left_bus_div & 0x07;
+
+	printf ("gpl_div %d\n", gpl_div);
+	printf ("gdl_div %d\n", gdl_div);
+
+	if (mux_gdl_sel == 1) {
+		clk_gdl = get_APLL_CLK() / gdl_div;
+		clk_gpl = (get_APLL_CLK() / gdl_div) / gpl_div;
+	} else {
+		if (mux_mpll_user == 1) {
+			clk_gdl = get_MPLL_CLK() / gdl_div;
+			clk_gpl = (get_MPLL_CLK() / gdl_div) / gpl_div;
+		} else {
+			clk_gdl = CONFIG_SYS_CLK_FREQ / gdl_div;
+			clk_gpl = (CONFIG_SYS_CLK_FREQ / gdl_div) / gpl_div;
+		}
+	}
+
+	if (ACLK_GDL_TYPE)
+		return clk_gdl;
+	else
+		return clk_gpl;
+
+}
+

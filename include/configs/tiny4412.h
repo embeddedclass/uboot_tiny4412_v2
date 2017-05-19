@@ -59,6 +59,12 @@
 #define CONFIG_SECURE_ROOTFS_SIZE	0x100000
 #endif
 
+#define CONFIG_DRIVER_EXYNOS_I2C
+#define CONFIG_HARD_I2C
+#define CONFIG_SYS_I2C_SPEED 100000
+#define CONFIG_EEPROMCMD
+#define CONFIG_SYS_I2C_SLAVE 0xAA
+
 //#define CONFIG_UPDATE_SOLUTION	1
 
 //#include <asm/arch/cpu.h>		/* get chip and board defs */

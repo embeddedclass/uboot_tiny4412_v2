@@ -172,6 +172,7 @@ COBJS-$(CONFIG_UPDATE_TFTP) += update.o
 COBJS-$(CONFIG_USB_KEYBOARD) += usb_kbd.o
 COBJS-$(CONFIG_HELLOWORLD) += cmd_helloworld.o
 COBJS-$(CONFIG_LEDCMD) += cmd_slash_led.o
+COBJS-$(CONFIG_EEPROMCMD) += cmd_slash_eeprom.o
 
 COBJS	:= $(sort $(COBJS-y))
 XCOBJS	:= $(sort $(XCOBJS-y))
