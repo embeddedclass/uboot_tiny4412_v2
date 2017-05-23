@@ -26,7 +26,7 @@
 #include <command.h>
 #include <asm/arch/gpio.h>
 
-int do_eeprom_sample(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
+int do_tiny4412_eeprom(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 {
 	int i = 0;
 	uint addr[1] = {0x00};
@@ -56,7 +56,7 @@ int do_eeprom_sample(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 }
 
 U_BOOT_CMD(
-	eeprom_sample,	3,		1,	do_eeprom_sample,
-	"eeprom_sample",
-	""
+	eeprom,	3,		1,	do_tiny4412_eeprom,
+	"eeprom  test",
+	"eeprom w 0x01, eeprom r"
 );
