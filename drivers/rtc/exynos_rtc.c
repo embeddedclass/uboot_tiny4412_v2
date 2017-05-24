@@ -31,7 +31,7 @@
 #if (defined(CONFIG_CMD_DATE))
 
 #include <asm/arch/cpu.h>
-#include <asm/arch/exynos_rtc.h>
+#include <asm/arch/cpu_exynos.h>
 
 
 #include <rtc.h>
