@@ -770,4 +770,8 @@ SAMSUNG_BASE(uart, UART_CONSOLE_BASE)
 #define GINTSTS_USBSusp		(1<<11)
 #define GINTSTS_RXFLvl		(1<<4)
 
+#ifdef CONFIG_EXYNOS4412
+#define EXYNOS_RTC_BASE 0x10070000
+#endif
+
 #endif	/* _S5PV310_CPU_H */
