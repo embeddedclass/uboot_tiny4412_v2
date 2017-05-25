@@ -27,11 +27,32 @@ struct exynos_rtc {
 	u8	res5[4];
 	u32 curticcnt 
 };
-#endif
+
+struct exynos_adc {
+	u32 adccon;
+	u32 res[1];
+	u32 adcdly;
+	u32 adcdat;
+	u32 clrintadc;
+	u32 adcmux;
+};
+
+typedef enum {
+ ADC_0 = 0,
+ ADC_1,
+ ADC_2,
+ ADC_3,
+ ADC_CHANNEL_MAX,
+} ADC_CHANNEL;
 
 static inline struct exynos_rtc *exynos_get_base_rtc(void)
 {
 	return (struct exynos_rtc *)EXYNOS_RTC_BASE;
 }
 
-s3c24x0_get_base_rtc();
+static inline struct exynos_adc *exynos_get_base_adc(void)
+{
+	return (struct exynos_adc *)EXYNOS_ADC_BASE;
+}
+
+#endif

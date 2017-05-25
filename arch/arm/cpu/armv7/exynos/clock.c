@@ -27,6 +27,7 @@ void s5p_clock_init(void)
 #define EPLL 2
 #define VPLL 3
 
+#define ACLK_133 133000000
 
 /* ------------------------------------------------------------------------- */
 /* NOTE: This describes the proper use of this file.
@@ -69,6 +70,16 @@ ulong get_APLL_CLK(void)
 ulong get_MPLL_CLK(void)
 {
 	return (get_PLLCLK(MPLL));
+}
+
+ulong get_ACLK_CLK(void)
+{
+	unsigned int *clk_div_top;
+	unsigned int clk_div_top_val;
+
+	clk_div_top = (unsigned int *)(ELFIN_CLOCK_BASE + CLK_DIV_TOP_OFFSET);
+	clk_div_top_val = *clk_div_top;
+	return (ACLK_133 / ((*clk_div_top & (0x07 << 12) >> 12) + 1));
 }
 
 ulong get_LEFTBUS_CLK (int clk_type)
@@ -115,7 +126,7 @@ ulong get_LEFTBUS_CLK (int clk_type)
 		}
 	}
 
-	if (ACLK_GDL_TYPE)
+	if (clk_type == ACLK_GDL_TYPE)
 		return clk_gdl;
 	else
 		return clk_gpl;

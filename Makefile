@@ -200,6 +200,7 @@ LIBS += fs/cramfs/libcramfs.o fs/fat/libfat.o fs/fdos/libfdos.o fs/jffs2/libjffs
 LIBS += net/libnet.o
 LIBS += disk/libdisk.o
 LIBS += drivers/bios_emulator/libatibiosemu.o
+LIBS += drivers/adc/libadc.o
 LIBS += drivers/block/libblock.o
 LIBS += drivers/dma/libdma.o
 LIBS += drivers/fpga/libfpga.o
